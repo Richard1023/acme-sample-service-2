@@ -1,19 +1,31 @@
-apiVersion: backstage.io/v1alpha1
-kind: Component
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+# some metadata about the template itself
 metadata:
-  name: sam-2-test-service
-  title: Sam Test service
-  description: |
-    A service for testing Backstage functionality. Cofigured for Bugsnag.
-  annotations:
-    bugsnag.com/project-key: RoadieHQ/93b71ec25fd3e1d803af87d57cea2acd
-    bugsnag.com/project-name: Test bugsnag app
-    github.com/public-repository: Public
-    github.com/project-slug: roadiehq/sample-service
+  name: hello-world-2
+  title: Hello World 2
+  description: scaffolder Hello, World template demo
 spec:
+  owner: backstage/techdocs-core
   type: service
-  owner: irma
-  lifecycle: experimental
-  system: sample-system
-  providesApis:
-    - test-service
+
+  parameters:
+    - title: Fill in some steps
+      required:
+        - name
+      properties:
+        name:
+          title: Name
+          type: string
+          description: Name of new project
+          ui:autofocus: true
+          ui:options:
+            rows: 5
+
+  # here's the steps that are executed in series in the scaffolder backend
+  steps:
+    - id: log-message
+      name: Log Message
+      action: debug:log
+      input:
+        message: "Hello, ${{ parameters.name }} 2"
