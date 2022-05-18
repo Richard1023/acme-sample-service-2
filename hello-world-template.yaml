@@ -1,0 +1,114 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: hello-world-template
+  title: Hello World
+  description: Says Hello to a specified name.
+spec:
+  owner: backstage/techdocs-core
+  type: service
+
+  parameters:
+    properties:
+#     - title: "Fill in the Name"
+#       properties:
+#         name:
+#           type: string
+#     - title: "Fill in the Age"
+#       properties:
+#         age:
+#           type: number
+#     - properties:
+#         size:
+#         type: number
+#         enum: [50, 100, 200]
+#       name:
+#         type: string
+#       entity:
+#         type: string
+#         ui:field: EntityPicker
+#       ownedEntity:
+#         type: string
+#         ui:field: OwnedEntityPicker
+#       entityName:
+#         type: string
+#         ui:field: EntityNamePicker
+#       languages:
+#         type: array
+#         items:
+#           type: string
+#           enum: ["java", "ruby", "python", "javascript"]
+#       entityTag:
+#         type: array
+#         ui:field: EntityTagsPicker
+      repoUrl:
+        type: string
+        ui:field: RepoUrlPicker
+        ui:options:
+          allowedHosts:
+            - github.com
+#       owner:
+#         type: string
+#         ui:field: OwnerPicker
+#       person:
+#         type: object
+#         properties:
+#           name:
+#             type: string
+#           age:
+#             type: number
+  steps:
+      - id: push
+        action: publish:github
+        input:
+          repoUrl: ${{ parameters.repoUrl }}
+#     - id: log-languages
+#       name: Log languages
+#       action: debug:log
+#       input:
+#         message: 'Hello, ${{ parameters.languages[0] }}!'
+#     - id: log-name
+#       name: Log Message
+#       action: debug:log
+#       input:
+#         message: 'Hello, ${{ parameters.name }}!'
+#     - id: log-age
+#       name: Log Message
+#       action: debug:log
+#       input:
+#         message: 'Hello, ${{ parameters.age }}!'
+#     - id: log-entity
+#       name: Log Message
+#       action: debug:log
+#       input:
+#         message: 'Hello, ${{ parameters.entity }}!'
+#     - id: log-entityName
+#       name: Log Message
+#       action: debug:log
+#       input:
+#         message: 'Hello, ${{ parameters.entityName}}!'
+#     - id: log-entityTag
+#       name: Log Message
+#       action: debug:log
+#       input:
+#         message: 'Hello, ${{ parameters.entityTag }}!'
+#     - id: log-repoUrl
+#       name: Log Message
+#       action: debug:log
+#       input:
+#         message: 'Hello, ${{ parameters.repoUrl }}!'
+#     - id: log-owner
+#       name: Log Message
+#       action: debug:log
+#       input:
+#         message: 'Hello, ${{ parameters.owner }}!'
+#     - id: log-ownedEntity
+#       name: Log Message
+#       action: debug:log
+#       input:
+#         message: 'Hello, ${{ parameters.ownedEntity }}!'
+#     - id: log-person
+#       name: Log Message
+#       action: debug:log
+#       input:
+#         message: 'Hello, ${{ parameters.person }}!'
