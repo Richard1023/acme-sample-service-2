@@ -1,6 +1,6 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
-# some metadata about the template itself
+# some metadata about the template itself1
 metadata:
   name: hello-world-3
   title: Hello World 3
